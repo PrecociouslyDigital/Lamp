@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Trail.cs" type="Script" id=1]
+
+[node name="Trail" type="Line2D"]
+points = PoolVector2Array( 204, 347, 0, 0 )
+default_color = Color( 0.996078, 1, 0.286275, 1 )
+begin_cap_mode = 1
+end_cap_mode = 1
+antialiased = true
+script = ExtResource( 1 )
