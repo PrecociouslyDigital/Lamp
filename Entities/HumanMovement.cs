@@ -4,12 +4,11 @@ using System;
 public class HumanMovement : KinematicBody2D
 {
     private const float lookSpeed = 5f;
-    private static readonly Vector2 snap = new Vector2(0f,0.1f);
 
     private float acceleration = 500f;
     private float topSpeed = 70f;
 
-    private const float gravity = 5f;
+    private const float gravity = 0f;
     private Vector2 velocity = new Vector2(0.0f, gravity);
     public float targetVelocity = 1.0f;
     public Vector2 lookTarget = new Vector2(20f,0f);

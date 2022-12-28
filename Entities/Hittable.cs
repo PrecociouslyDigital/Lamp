@@ -8,13 +8,19 @@ public enum HitType
 }
 
 
-public struct HitInfo
+public readonly struct HitInfo
 {
-    public Vector2 direction;
-    public HitType hitType;
+    public readonly Vector2 direction;
+    public readonly HitType hitType;
+
+    public HitInfo(Vector2 direction, HitType hitType)
+    {
+        this.direction = direction;
+        this.hitType = hitType;
+    }
 }
 public abstract class Hittable : Node2D
 {
 
-    public abstract void OnHit(HitInfo hitInfo);
+    public abstract bool OnHit(HitInfo hitInfo);
 }

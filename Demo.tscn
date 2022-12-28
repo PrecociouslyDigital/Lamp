@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/HumanMovement.cs" type="Script" id=1]
 [ext_resource path="res://Entities/Player/PlayerInput.cs" type="Script" id=2]
 [ext_resource path="res://Lights/flashlight.png" type="Texture" id=3]
 [ext_resource path="res://Red.webp" type="Texture" id=4]
+[ext_resource path="res://Entities/Gun Stuff/DevGun.cs" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 357, 11.5 )
@@ -36,6 +37,16 @@ position = Vector2( -1, 341 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
 position = Vector2( 358, 140.5 )
 shape = SubResource( 1 )
+disabled = true
+
+[node name="Floor2" type="Node2D" parent="."]
+position = Vector2( -1, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/StaticBody2D"]
+position = Vector2( 358, 140.5 )
+shape = SubResource( 1 )
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( -1, 341 )
@@ -48,9 +59,15 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HumanMovement"]
 shape = SubResource( 10 )
 
+[node name="DebugText" type="RichTextLabel" parent="Player/HumanMovement"]
+visible = false
+margin_right = 186.0
+margin_bottom = 50.0
+text = "        dsf"
+
 [node name="Arm" type="Sprite" parent="Player/HumanMovement"]
 position = Vector2( 23, 8 )
-rotation = 5.01608
+rotation = -1.26711
 scale = Vector2( 0.00683692, 42.7178 )
 texture = SubResource( 3 )
 
@@ -62,11 +79,8 @@ offset = Vector2( 960, 0 )
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 
-[node name="DebugText" type="RichTextLabel" parent="Player/HumanMovement"]
-visible = false
-margin_right = 186.0
-margin_bottom = 50.0
-text = "        dsf"
+[node name="Gun" type="RayCast2D" parent="Player/HumanMovement/Arm"]
+script = ExtResource( 5 )
 
 [node name="Red" type="Sprite" parent="."]
 position = Vector2( 277, 304 )
