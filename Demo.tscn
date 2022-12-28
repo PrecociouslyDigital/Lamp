@@ -37,7 +37,6 @@ position = Vector2( -1, 341 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
 position = Vector2( 358, 140.5 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Floor2" type="Node2D" parent="."]
 position = Vector2( -1, 0 )

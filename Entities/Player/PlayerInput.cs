@@ -17,7 +17,7 @@ public class PlayerInput : Node2D
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta){
-        this.human.targetVelocity = Input.GetAxis("move_left", "move_right");
+        this.human.targetVelocity = Input.GetVector("move_left", "move_right", "move_up", "move_down");
         this.human.lookTarget = base.GetGlobalMousePosition();
 
         if (Input.IsActionJustPressed("fire"))

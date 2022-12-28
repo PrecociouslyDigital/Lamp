@@ -8,9 +8,8 @@ public class HumanMovement : KinematicBody2D
     private float acceleration = 500f;
     private float topSpeed = 70f;
 
-    private const float gravity = 0f;
-    private Vector2 velocity = new Vector2(0.0f, gravity);
-    public float targetVelocity = 1.0f;
+    private Vector2 velocity = new Vector2(0.0f, 0.0f);
+    public Vector2 targetVelocity = new Vector2(0.0f, 0.0f);
     public Vector2 lookTarget = new Vector2(20f,0f);
 
     private Node2D Arm;
@@ -26,8 +25,8 @@ public class HumanMovement : KinematicBody2D
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta) {
         base._Process(delta);
-        this.velocity.x = Mathf.MoveToward(this.velocity.x, this.targetVelocity * topSpeed, acceleration * delta);
-        base.MoveAndCollide(this.velocity);
+        this.velocity = this.velocity.MoveToward(this.targetVelocity * topSpeed, acceleration * delta);
+        base.MoveAndCollide(this.velocity * delta);
 
 
         var lookTargetRelative = this.lookTarget - this.GlobalPosition;
